@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEO 中尾 竜也 | Bulk Technologies</title>
+<meta name="description" content="株式会社Bulk Technologies CEO・中尾竜也のプロフィール。2026年3月東京大学法学部卒業、在学中の2026年2月に創業。">
+<meta property="og:title" content="CEO 中尾 竜也 | Bulk Technologies">
+<meta property="og:description" content="株式会社Bulk Technologies CEO 中尾竜也のプロフィール。">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://bulktech.co.jp/profile.html">
+<meta property="og:image" content="https://bulktech.co.jp/images/profile.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;500;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #000;
+    --text: #fff;
+    --text-sub: rgba(255,255,255,0.6);
+    --text-muted: rgba(255,255,255,0.25);
+    --border: rgba(255,255,255,0.1);
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Noto Sans JP', sans-serif;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: #fff; color: #000; }
+  a { color: inherit; text-decoration: none; }
+
+  /* CURSOR GLOW */
+  .cursor-glow {
+    position: fixed; width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+    pointer-events: none; z-index: 9998; transform: translate(-50%, -50%);
+    transition: opacity 0.3s; opacity: 0;
+  }
+  body:hover .cursor-glow { opacity: 1; }
+
+  /* LOADER */
+  .loader {
+    position: fixed; inset: 0; background: #000; z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  .loader.done { opacity: 0; visibility: hidden; }
+  .loader-text {
+    font-family: var(--font-display); font-size: 1rem; font-weight: 800;
+    letter-spacing: 0.25em; text-transform: uppercase; overflow: hidden;
+  }
+  .loader-text span {
+    display: inline-block; opacity: 0; transform: translateY(100%);
+    animation: loaderReveal 0.5s ease forwards;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 3rem; height: 60px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transform: translateY(-100%);
+    animation: navSlide 0.6s ease forwards 1.0s;
+  }
+  .nav-logo {
+    font-family: var(--font-display); font-weight: 800; font-size: 0.9rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--text-sub);
+    transition: color 0.3s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--text);
+    transition: width 0.4s ease;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--text); }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .nav-toggle {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    padding: 4px; z-index: 101;
+  }
+  .nav-toggle span {
+    display: block; width: 22px; height: 1.5px; background: var(--text);
+    transition: all 0.3s;
+  }
+
+  /* PROFILE HERO */
+  .profile-hero {
+    min-height: 100vh;
+    padding: 120px 3rem 5rem;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .profile-photo {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    opacity: 0;
+    animation: fadeUp 1.0s cubic-bezier(0.16,1,0.3,1) forwards 1.0s;
+  }
+  .profile-photo img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(15%) contrast(1.05);
+    transition: filter 0.6s ease, transform 8s ease;
+    transform: scale(1.05);
+  }
+  .profile-photo:hover img { filter: grayscale(0%) contrast(1); transform: scale(1.1); }
+
+  .profile-info { max-width: 560px; }
+  .profile-eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+  .profile-name-en {
+    font-family: var(--font-display);
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-bottom: 0.6rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.4s;
+  }
+  .profile-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5.5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.5s;
+  }
+  .profile-message {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: var(--text-sub);
+    margin-bottom: 2rem;
+    max-width: 480px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.7s;
+  }
+  .profile-message strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* BIO TABLE */
+  .bio {
+    padding: 5rem 3rem 7rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .bio-eyebrow {
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  .bio-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 3rem;
+  }
+  .bio-table { display: flex; flex-direction: column; }
+  .bio-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: padding-left 0.4s ease, background 0.4s ease;
+    gap: 2rem;
+    align-items: baseline;
+    position: relative;
+  }
+  .bio-row:first-child { border-top: 1px solid var(--border); }
+  .bio-row::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 0;
+    background: rgba(255,255,255,0.02);
+    transition: width 0.4s ease;
+  }
+  .bio-row:hover::before { width: 100%; }
+  .bio-row:hover { padding-left: 1rem; }
+  .bio-key {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    position: relative;
+  }
+  .bio-val {
+    font-size: 0.92rem;
+    font-weight: 300;
+    line-height: 1.8;
+    position: relative;
+  }
+  .bio-val em { font-style: normal; color: var(--text-muted); font-size: 0.82rem; margin-left: 0.5rem; }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .footer-copy {
+    font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.05em;
+  }
+  .footer-back {
+    font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); transition: color 0.3s;
+  }
+  .footer-back:hover { color: var(--text); }
+
+  /* ANIMATIONS */
+  @keyframes loaderReveal { to { opacity: 1; transform: translateY(0); } }
+  @keyframes navSlide { to { transform: translateY(0); } }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.vis { opacity: 1; transform: translateY(0); }
+  .reveal-stagger > * {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal-stagger.vis > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+  .reveal-stagger.vis > *:nth-child(2) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+  .reveal-stagger.vis > *:nth-child(3) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+  .reveal-stagger.vis > *:nth-child(4) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .profile-hero {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 100px 1.5rem 3rem;
+    }
+    .profile-photo { max-width: 360px; margin: 0 auto; }
+    .profile-info { max-width: 100%; text-align: center; margin: 0 auto; }
+    .profile-message { margin-left: auto; margin-right: auto; }
+  }
+  @media (max-width: 768px) {
+    .nav { padding: 0 1.5rem; }
+    .nav-links {
+      display: none;
+      position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.97); flex-direction: column;
+      justify-content: center; align-items: center; gap: 2.5rem;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 1rem; letter-spacing: 0.15em; }
+    .nav-toggle { display: flex; }
+
+    .bio { padding: 3rem 1.5rem 5rem; }
+    .bio-row { grid-template-columns: 110px 1fr; gap: 1rem; }
+    .bio-key { font-size: 0.62rem; }
+    .bio-val { font-size: 0.85rem; }
+
+    .footer {
+      padding: 1.5rem; flex-direction: column; gap: 0.8rem; text-align: center;
+    }
+    .cursor-glow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-text" id="loaderText"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">Bulk Technologies</a>
+  <div class="nav-toggle" id="navToggle">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#product">Product</a></li>
+    <li><a href="profile.html" class="active">CEO</a></li>
+    <li><a href="index.html#company">Company</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- PROFILE HERO -->
+<section class="profile-hero">
+  <div class="profile-photo">
+    <img src="images/profile.jpg" alt="中尾 竜也 / Tatsuya Nakao">
+  </div>
+  <div class="profile-info">
+    <div class="profile-eyebrow">— CEO / Founder</div>
+    <div class="profile-name-en">Tatsuya Nakao</div>
+    <h1 class="profile-name">中尾 竜也</h1>
+    <p class="profile-message">
+      フィットネスを「苦行」から<strong>「最高のエンタメ」</strong>へ。<br>
+      誰もが、気軽に、笑顔で楽しめる世界を、<br>
+      テクノロジーで創ります。
+    </p>
+  </div>
+</section>
+
+<!-- BIO -->
+<section class="bio">
+  <div class="reveal">
+    <div class="bio-eyebrow">Profile</div>
+    <h2 class="bio-heading">Background</h2>
+  </div>
+  <div class="bio-table reveal-stagger">
+    <div class="bio-row">
+      <div class="bio-key">Born</div>
+      <div class="bio-val">2001年 / 大阪府富田林市</div>
+    </div>
+    <div class="bio-row">
+      <div class="bio-key">Education</div>
+      <div class="bio-val">東京大学 法学部 第3類(政治コース)<em>2026年3月卒業</em></div>
+    </div>
+    <div class="bio-row">
+      <div class="bio-key">Founded</div>
+      <div class="bio-val">株式会社 Bulk Technologies<em>2026年2月2日 / 在学中に創業</em></div>
+    </div>
+    <div class="bio-row">
+      <div class="bio-key">Role</div>
+      <div class="bio-val">代表取締役 CEO</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-copy">© 2026 Bulk Technologies, Inc.</span>
+  <a href="index.html" class="footer-back">← Back to Home</a>
+</footer>
+
+<script>
+  // LOADER
+  const loaderText = document.getElementById('loaderText');
+  const text = 'PROFILE';
+  text.split('').forEach((c, i) => {
+    const s = document.createElement('span');
+    s.textContent = c;
+    s.style.animationDelay = `${i * 0.06}s`;
+    loaderText.appendChild(s);
+  });
+  setTimeout(() => document.getElementById('loader').classList.add('done'), 900);
+
+  // SCROLL REVEAL
+  const revObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revObs.observe(el));
+
+  // NAV
+  document.getElementById('navToggle').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // CURSOR GLOW
+  const glow = document.getElementById('cursorGlow');
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    });
+  }
+</script>
+
+</body>
+</html>
