@@ -64,7 +64,7 @@
       varying vec2 v_uv;varying float v_field;
       void main(){v_uv=a_uv;v_field=a_field;gl_Position=vec4(a_position.x*2.0-1.0,1.0-a_position.y*2.0,0.0,1.0);}`));
     gl.attachShader(program,shader(gl.FRAGMENT_SHADER,`
-      precision mediump float;varying vec2 v_uv;varying float v_field;
+      precision highp float;varying vec2 v_uv;varying float v_field;
       uniform sampler2D u_photo;uniform sampler2D u_data;
       uniform float u_scan;uniform float u_release;
       void main(){
@@ -79,7 +79,20 @@
         vec3 color=mix(photo,data,amount);
         float edge=exp(-pow((v_uv.y-boundary)*95.0,2.0))*v_field;
         color+=vec3(.75,.9,.85)*edge*.09*(1.0-u_release);
-        gl_FragColor=vec4(color,samplePhoto.a);
+        // Contract only the cutout boundary; keep the interior analysis detail.
+        vec2 texel=vec2(1.25/1672.0,1.25/941.0);
+        float matte=samplePhoto.a;
+        matte=min(matte,texture2D(u_photo,v_uv+vec2(texel.x,0.0)).a);
+        matte=min(matte,texture2D(u_photo,v_uv-vec2(texel.x,0.0)).a);
+        matte=min(matte,texture2D(u_photo,v_uv+vec2(0.0,texel.y)).a);
+        matte=min(matte,texture2D(u_photo,v_uv-vec2(0.0,texel.y)).a);
+        // Keep the bright analysis texture away from the extraction fringe.
+        vec2 innerTexel=vec2(4.0/1672.0,4.0/941.0);
+        float inner=min(texture2D(u_photo,v_uv+vec2(innerTexel.x,0.0)).a,texture2D(u_photo,v_uv-vec2(innerTexel.x,0.0)).a);
+        inner=min(inner,texture2D(u_photo,v_uv+vec2(0.0,innerTexel.y)).a);
+        inner=min(inner,texture2D(u_photo,v_uv-vec2(0.0,innerTexel.y)).a);
+        color=mix(photo,color,smoothstep(.05,.95,inner));
+        gl_FragColor=vec4(color,smoothstep(.15,.85,matte));
       }`));
     gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))return;
   } catch {return;}
@@ -107,7 +120,18 @@
     });
   }
   let ready=false,lost=false;
-  function resize(){const targetWidth=Math.min(2200,Math.round(canvas.getBoundingClientRect().width*Math.min(devicePixelRatio||1,1.6)));const targetHeight=Math.round(targetWidth*height/width);if(canvas.width!==targetWidth||canvas.height!==targetHeight){canvas.width=targetWidth;canvas.height=targetHeight;gl.viewport(0,0,targetWidth,targetHeight);}}
+  // Reserve the full 4% camera zoom at native pixel density. Measuring the
+  // transformed bounds here recreated the drawing buffer during every zoom.
+  const maxBufferSize=Math.min(4096,gl.getParameter(gl.MAX_RENDERBUFFER_SIZE));
+  function resize(){
+    const ratio=Math.min(devicePixelRatio||1,3);
+    const targetWidth=Math.max(1,Math.min(maxBufferSize,Math.ceil(canvas.clientWidth*1.04*ratio)));
+    const targetHeight=Math.max(1,Math.round(targetWidth*height/width));
+    if(canvas.width!==targetWidth||canvas.height!==targetHeight){
+      canvas.width=targetWidth;canvas.height=targetHeight;
+      gl.viewport(0,0,targetWidth,targetHeight);
+    }
+  }
   function render({amount=0,scan=0,release=0}) {
     if(!ready||lost)return null;
     const pose=poseAt(amount);
@@ -128,7 +152,7 @@
   }
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;ready=false;canvas.parentElement.classList.remove('has-motion-map');window.dispatchEvent(new Event('bulk-motion-lost'));});
   // Images remain the durable fallback if WebGL is unavailable or its context is lost.
-  Promise.all([loadTexture('assets/capture-person-v2.webp',0),loadTexture('assets/capture-person-analysis-v2.webp',1)]).then(loaded=>{
+  Promise.all([loadTexture('assets/capture-person-v2.png',0),loadTexture('assets/capture-person-analysis-v2.png',1)]).then(loaded=>{
     if(lost||gl.isContextLost()||!loaded.every(Boolean))return;
     ready=true;render({});canvas.parentElement.classList.add('has-motion-map');window.dispatchEvent(new Event('bulk-motion-ready'));
   });

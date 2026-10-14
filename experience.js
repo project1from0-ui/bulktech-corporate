@@ -60,21 +60,20 @@
     data.style.opacity=String(acquisition);
     const shift=ease((p-.34)/.24);
     const mobile=innerWidth<=700;
-    if(mobile){
-      // Fit the source image and its SVG/canvas together below the actual copy.
-      const copyBottom=chapters[1].offsetTop+chapters[1].offsetHeight;
-      const start=Math.max(copyBottom+22,stage.offsetHeight*.42);
-      const available=Math.max(140,stage.offsetHeight-start-34);
-      const width=Math.min(innerWidth*2.2,available/.80*1672/941);
-      const height=width*941/1672;
-      composition.style.width=`${width}px`;
-      composition.style.left=`${innerWidth*.5-width*.69}px`;
-      composition.style.top=`${start+height*.38}px`;
-      composition.style.transform='translate3d(0,-50%,0)';
-    }else{
-      ['width','left','top'].forEach(key=>composition.style.removeProperty(key));
-      composition.style.transform=`translate3d(${shift*1.5}%, -50%, 0) scale(${1+shift*.04})`;
-    }
+    // Fit the complete motion envelope below the header/copy, including the crown.
+    const viewportHeight=Math.min(stage.offsetHeight,innerHeight);
+    const headerBottom=header.getBoundingClientRect().bottom;
+    const copyBottom=chapters[1].offsetTop+chapters[1].offsetHeight;
+    const portrait=mobile&&innerHeight>innerWidth;
+    const desiredStart=portrait?Math.max(copyBottom+24,headerBottom+24):headerBottom+32;
+    const start=Math.min(desiredStart,viewportHeight-128);
+    const available=Math.max(80,viewportHeight-start-48);
+    const width=Math.min(innerWidth*(portrait?2.2:.9),available/.82*1672/941);
+    const height=width*941/1672;
+    composition.style.width=`${width}px`;
+    composition.style.left=portrait?`${innerWidth*.5-width*.69}px`:'14%';
+    composition.style.top=`${start+(available-height*.82)/2+height*.46}px`;
+    composition.style.transform='translate3d(0,-50%,0)';
     frame.style.opacity=String(between(p,.26,.31,.40,.48)*.6);
     frame.style.transform=`translate(${(1-ease((p-.26)/.12))*8}px,0)`;
     // 06's isolated-person deformation, mapped into 05's existing capture interval.
