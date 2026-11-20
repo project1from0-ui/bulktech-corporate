@@ -1,0 +1,138 @@
+{
+  "items": [
+    {
+      "id": "xgate-20261118",
+      "date": "2026-11-18",
+      "category": "program",
+      "publisher": "XTech Ventures",
+      "url": "https://www.xtech-ventures.co.jp/info/x-gate10_release",
+      "title": {
+        "ja": "弊社がアクセラレーションプログラム「X-Gate」第10期に採択されました",
+        "en": "Selected for the 10th cohort of X-Gate"
+      },
+      "dateType": "announcement",
+      "description": {
+        "ja": "弊社は、XTech Ventures株式会社が運営するアクセラレーションプログラム「X-Gate」第10期に採択されました。\n\n現在、スマートフォンによる身体動作解析と音声での伴走を通じて、一人ひとりの運動を支えるAIトレーニングパートナー「BULK」を開発しています。\n\n本プログラムを通じて、サービスの開発と事業の成長をさらに進めてまいります。",
+        "en": "Bulk Technologies has been selected for the 10th cohort of X-Gate, an accelerator program operated by XTech Ventures.\n\nWe are developing BULK, an AI training partner that supports individual exercise through smartphone-based movement analysis and voice assistance.\n\nThrough this program, we will further advance our service development and business growth."
+      }
+    },
+    {
+      "id": "nikkei-20260730",
+      "date": "2026-07-30",
+      "category": "media",
+      "publisher": "NIKKEI THE PITCH",
+      "url": "https://pitch.nikkei.com/library/176/",
+      "title": {
+        "ja": "NIKKEI THE PITCHに代表インタビュー掲載",
+        "en": "Founder interview published in NIKKEI THE PITCH"
+      },
+      "dateType": "publication",
+      "description": {
+        "ja": "弊社代表の中尾へのインタビューを通じて、起業の歩みとAIを活用したフィットネス事業への取り組みが紹介されました。",
+        "en": "An interview with Tatsuya Nakao explores his entrepreneurial journey and our work in AI-powered fitness."
+      }
+    },
+    {
+      "id": "anobaka-20260529",
+      "date": "2026-05-29",
+      "category": "event",
+      "publisher": "ANOBAKA",
+      "url": "https://anobaka.jp/news/11790/",
+      "title": {
+        "ja": "Generative AI Conference TOKYO 2026に登壇",
+        "en": "BULK presents at Generative AI Conference TOKYO 2026"
+      },
+      "dateType": "publication",
+      "description": {
+        "ja": "弊社が「ANOくん特別枠」に選出され、5月26日の生成AI Idea Pitchに代表の中尾が登壇しました。",
+        "en": "Selected for the special ANO-kun slot, BULK was represented by founder Tatsuya Nakao at the Generative AI Idea Pitch on May 26."
+      }
+    },
+    {
+      "id": "ceo-20260413",
+      "date": "2026-04-13",
+      "category": "event",
+      "publisher": "PR TIMES / スタートアップファクトリー",
+      "url": "https://prtimes.jp/main/html/rd/p/000000009.000170597.html",
+      "title": {
+        "ja": "「第2回 C×E×O」に弊社代表の中尾が登壇",
+        "en": "Our founder presents at the 2nd C×E×O business contest"
+      },
+      "publisherEn": "PR TIMES / Startup Factory",
+      "dateType": "publication",
+      "description": {
+        "ja": "4月11日開催のビジネスコンテストでの登壇の様子が、主催者の開催レポートに掲載されました。",
+        "en": "The organizer’s report covers Tatsuya Nakao’s presentation at the business contest on April 11."
+      }
+    },
+    {
+      "id": "nikkei-20260408",
+      "date": "2026-04-08",
+      "category": "media",
+      "publisher": "NIKKEI THE PITCH",
+      "url": "https://pitch.nikkei.com/library/149/",
+      "title": {
+        "ja": "NIKKEI THE PITCHの最終プレゼンテーションリポートに掲載",
+        "en": "Featured in NIKKEI THE PITCH’s final presentation report"
+      },
+      "dateType": "publication",
+      "description": {
+        "ja": "弊社代表の中尾による、フィットネスジム向けAIアプリの事業構想とプレゼンテーションが紹介されました。",
+        "en": "The report features Tatsuya Nakao’s presentation of an AI fitness app concept for gyms."
+      }
+    },
+    {
+      "id": "nikkei-20260330",
+      "date": "2026-03-30",
+      "category": "media",
+      "publisher": "NIKKEI THE PITCH",
+      "url": "https://pitch.nikkei.com/library/101/",
+      "title": {
+        "ja": "NIKKEI THE PITCHの沖縄合宿リポートに掲載",
+        "en": "Featured in NIKKEI THE PITCH’s Okinawa workshop report"
+      },
+      "dateType": "publication",
+      "description": {
+        "ja": "弊社代表の中尾が参加した沖縄合宿でのプレゼンテーションと、当時の事業構想が紹介されました。",
+        "en": "The report covers Tatsuya Nakao’s workshop presentation and the business concept he was developing at the time."
+      }
+    },
+    {
+      "id": "asac-20251201",
+      "date": "2025-12-01",
+      "category": "program",
+      "publisher": "東京都創業NET",
+      "url": "https://www.tokyo-sogyo-net.metro.tokyo.lg.jp/news/news251201_02.html",
+      "title": {
+        "ja": "ASAC第2期プレシードプログラムに参加",
+        "en": "BULK takes part in ASAC’s second pre-seed program"
+      },
+      "publisherEn": "Tokyo Startup NET",
+      "dateType": "publication",
+      "description": {
+        "ja": "弊社は、東京都の青山スタートアップアクセラレーションセンター（ASAC）が実施する第2期プレシードプログラムに参加しました。",
+        "en": "BULK participated in the second pre-seed program run by the Tokyo Metropolitan Government’s Aoyama Startup Acceleration Center (ASAC)."
+      },
+      "dateLabel": {
+        "ja": "主催者発表日",
+        "en": "Organizer announcement"
+      }
+    },
+    {
+      "id": "earthkey-20260916",
+      "date": "2026-09-16",
+      "dateType": "event",
+      "category": "event",
+      "publisher": "earthkey",
+      "url": "https://earthkey.events/events/earthkey-pitch-vol-226/",
+      "title": {
+        "ja": "「earthkey pitch vol.226」に弊社代表の中尾が登壇",
+        "en": "Our founder presents at earthkey pitch vol.226"
+      },
+      "description": {
+        "ja": "9月16日開催のスタートアップピッチイベントで、事業の取り組みを紹介しました。",
+        "en": "Tatsuya Nakao presented our work at the startup pitch event on September 16."
+      }
+    }
+  ]
+}
