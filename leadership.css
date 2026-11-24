@@ -1,17 +1,17 @@
 
 /* Leadership: approved portrait framing and responsive profiles. */
-.leadership-heading{padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.leadership-heading{text-align:left;padding-bottom:28px;border-bottom:1px solid var(--line);margin-bottom:26px}
 .leadership-heading h2{font-size:clamp(40px,6vw,72px);line-height:1.1}
 .leadership-heading .eyebrow{margin-bottom:10px;color:#c0f555}
 .leadership-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,4vw,52px)}
-.leadership-member{min-width:0;border-bottom:1px solid var(--line);text-align:center}
-.leadership-portrait{width:min(100%,clamp(190px,24vw,285px));aspect-ratio:1;margin:14px auto 0;border-radius:50%;overflow:hidden;border:1px solid #ffffff2e}
+.leadership-member{min-width:0;border-bottom:1px solid var(--line);text-align:left}
+.leadership-portrait{width:min(100%,clamp(190px,24vw,285px));aspect-ratio:1;margin:14px 0 0;border-radius:50%;overflow:hidden;border:1px solid #ffffff2e}
 .leadership-portrait img{width:100%;height:100%;object-fit:cover}
 .leadership-profile{padding:26px 0 28px}
 .leadership-role,.leadership-roman{font-size:11px;font-weight:600;letter-spacing:.14em}
 .leadership-role{color:#c0f555;margin-bottom:9px}
 .leadership-name{font-size:clamp(27px,4vw,42px);font-weight:500;letter-spacing:-.035em;line-height:1.22;margin:0 0 4px}
 .leadership-roman{color:var(--muted);margin-bottom:15px}
-.leadership-bio{font-size:15px;line-height:1.85;color:#d2d6d0;overflow-wrap:anywhere;margin:0 auto;max-width:27em}
+.leadership-bio{font-size:15px;line-height:1.85;color:#d2d6d0;overflow-wrap:anywhere;margin:0;max-width:27em}
 .leadership-bio p{margin:0}.leadership-bio p+p{margin-top:.6em}
-@media(max-width:650px){.leadership-grid{grid-template-columns:1fr;gap:34px}.leadership-heading{padding-bottom:22px;margin-bottom:20px}.leadership-portrait{width:min(76%,245px);margin-top:8px}.leadership-profile{padding:20px 0 23px}.leadership-bio{font-size:14px}}
+@media(max-width:650px){.leadership-grid{grid-template-columns:1fr;gap:34px}.leadership-heading{text-align:left;padding-bottom:22px;margin-bottom:20px}.leadership-portrait{width:min(76%,245px);margin-top:8px}.leadership-profile{padding:20px 0 23px}.leadership-bio{font-size:14px}}
