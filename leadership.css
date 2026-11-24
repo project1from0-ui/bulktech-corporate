@@ -13,4 +13,5 @@
 .leadership-name{font-size:clamp(27px,4vw,42px);font-weight:500;letter-spacing:-.035em;line-height:1.22;margin:0 0 4px}
 .leadership-roman{color:var(--muted);margin-bottom:15px}
 .leadership-bio{font-size:15px;line-height:1.85;color:#d2d6d0;overflow-wrap:anywhere;margin:0 auto;max-width:27em}
+.leadership-bio p{margin:0}.leadership-bio p+p{margin-top:.6em}
 @media(max-width:650px){.leadership-grid{grid-template-columns:1fr;gap:34px}.leadership-heading{padding-bottom:22px;margin-bottom:20px}.leadership-portrait{width:min(76%,245px);margin-top:8px}.leadership-profile{padding:20px 0 23px}.leadership-bio{font-size:14px}}
